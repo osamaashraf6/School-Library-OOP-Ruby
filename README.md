@@ -25,16 +25,16 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [Vet Clinic Database] <a name="about-project"></a>
+# 📖 [School-Library-OOP-Ruby] <a name="about-project"></a>
 
-> In this project, I used a relational database to create the initial data structure for a vet clinic. I created a table to store animals' information, insert some data into it, and query it.
+> Ruby-OOP-School-Library Imagine that you are the librarian of OOP University, and you need a tool to record what books are in the library and who borrows them
 
 
 
 ## 🛠 Built With <a name="built-with"></a>
 
-- [x] Database👌
-- [x] Postgresql
+- [x] Ruby👌
+- [x] OOP ruby
 
 
 ### Tech Stack <a name="tech-stack"></a>
@@ -65,12 +65,10 @@
 
 ### Key Features <a name="key-features"></a>
 
-> Describe between 1-3 key features of the application.
 
-
-- [ ] Created a database named vet_clinic.
-- [ ] Created a table named animals with corresponding columns upon the requirements💯
-- [ ] Inserted data of 4 animals with the corresponding name, date_of_birth, weight, neutered status, and escape attempts👌
+- [ ] Add Person class and his method👌
+- [ ] Add Student class and his method💯
+- [ ] Add Teachers class and his method👌
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -112,8 +110,8 @@ Clone this repository to your desired folder:
 Example commands:
 
 ```sh
-  cd Vet-clinic-database
-  git clone https://github.com/osamaashraf6/Vet-clinic-database.git
+  cd School-Library-OOP-Ruby
+  git clone https://github.com/osamaashraf6/School-Library-OOP-Ruby
 ```
 
 
@@ -185,7 +183,10 @@ Example:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-> I will create other tables at this project for the clinic💯
+> Add more methods and attributes to the Person and Student classes.
+> Create additional classes that inherit from Person, such as Teacher and Parent.💯
+> Implement functionality to store and retrieve Person and Student objects from a database.
+
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -227,9 +228,8 @@ I would like to thank Microverse for this opportunity.
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](https://github.com/osamaashraf6/Vet-clinic-database/blob/dev/LICENCE) licensed.
+This project is [MIT](https://github.com/osamaashraf6/School-Library-OOP-Ruby/blob/classes__1/MIT.md) licensed.
 
 _NOTE: we recommend using the [MIT license](https://choosealicense.com/licenses/mit/) - you can set it up quickly by [using templates available on GitHub](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-a-license-to-a-repository). You can also use [any other license](https://choosealicense.com/licenses/) if you wish._
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-s
