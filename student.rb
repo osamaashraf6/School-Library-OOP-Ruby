@@ -11,4 +11,9 @@ class Student < Person
   def play_hooky
     '¯\\_(ツ)_/¯'.encode('utf-8')
   end
+
+  def set_classroom(classroom) # rubocop:disable Naming/AccessorMethodName
+    @classroom = classroom
+    classroom.students << self unless classroom.students.include?(self)
+  end
 end
