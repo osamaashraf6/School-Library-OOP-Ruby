@@ -12,8 +12,8 @@ class Student < Person
     '¯\\_(ツ)_/¯'.encode('utf-8')
   end
 
-  def set_classroom(classroom) # rubocop:disable Naming/AccessorMethodName
+  def classroom=(classroom)
     @classroom = classroom
-    classroom.students << self unless classroom.students.include?(self)
+    classroom.students.push(self) unless classroom.students.include?(self)
   end
 end
