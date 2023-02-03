@@ -1,14 +1,17 @@
 require_relative 'person'
 
 class Teacher < Person
-  attr_reader :specialization
-
-  def initialize(age, specialization, name: 'Unknown', parent_permission: true)
-    super(age, name: name, parent_permission: parent_permission) # call the parent's constructor
+  def initialize(age, specialization, name: 'Unkown', parent_permission: true)
+    puts "HERE #{name}"
+    super(age, name, parent_permission: parent_permission)
     @specialization = specialization
   end
 
   def can_use_services?
     true
+  end
+
+  def teach_stuff
+    'Everything'
   end
 end
