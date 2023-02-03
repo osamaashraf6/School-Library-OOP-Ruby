@@ -1,8 +1,10 @@
-require_relative 'nameable'
+require_relative './nameable/nameable_decorator'
 
 class Person < Nameable
-  attr_accessor :name, :age
+  # getters
   attr_reader :id
+  # accessors (getters and setters)
+  attr_accessor :name, :age
 
   def initialize(age, name: 'Unknown', parent_permission: true)
     super()
@@ -10,6 +12,7 @@ class Person < Nameable
     @name = name
     @age = age
     @parent_permission = parent_permission
+    @rentals = []
   end
 
   def can_use_services?
@@ -18,6 +21,15 @@ class Person < Nameable
 
   def correct_name
     @name
+  end
+
+  attr_accessor :classroom
+
+  # many to many relationship
+  attr_reader :rentals
+
+  def add_rental(date, book)
+    Rental.new(date, book, self)
   end
 
   private

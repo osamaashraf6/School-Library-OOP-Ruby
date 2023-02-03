@@ -11,4 +11,9 @@ class Student < Person
   def play_hooky
     '¯\\_(ツ)_/¯'.encode('utf-8')
   end
+
+  def classroom=(classroom)
+    @classroom = classroom
+    classroom.students.push(self) unless classroom.students.include?(self)
+  end
 end
