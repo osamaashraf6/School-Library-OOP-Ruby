@@ -1,150 +1,70 @@
-require './student'
-require './teacher'
-require './book'
-require './rental'
+require 'time'
+require_relative 'person'
+require_relative 'student'
+require_relative 'teacher'
+require_relative './nameable/capitalize_decorator'
+require_relative './nameable/trimmer_decorator'
+require_relative './associations/classroom'
+require_relative './associations/book'
+require_relative './associations/rental'
+require_relative './modules/list_all_books_1'
+require_relative './modules/list_all_people_2'
+require_relative './modules/create_person_3'
+require_relative './modules/create_book_4'
+require_relative './modules/create_rental_5'
+require_relative './modules/list_rentals_6'
+require_relative './modules/menu'
+require_relative './data/handle_exit'
+require_relative './data/read_data'
 
 class App
+  include ListAllBooks
+  include ListAllPeople
+  include CreatePerson
+  include CreateBook
+  include CreateRental
+  include ListRentals
+  include Menu
+  include HandleExit
+  include ReadData
+
   def initialize
-    @books = []
-    @person = []
-    @rentals = []
+    @books = read_books
+    @people = read_people
+    @rentals = read_rentals
+    @classrooms = []
   end
 
-  # rubocop:disable Style/CyclomaticComplexity
-  def select_opt
-    option = gets.chomp.to_i
-    case option
-    when 1 then list_books
-    when 2 then list_people
-    when 3 then create_person
-    when 4 then create_book
-    when 5 then create_rental
-    when 6 then list_rentals
-    when 7 then exit(true)
-    else
-      puts 'PLEASE ENTER A NUMBER (1..7)'
-    end
-  end
-  # rubocop:enable Style/CyclomaticComplexity
-
-  def list_books
-    @books.each do |book|
-      puts "Title: #{book.title}, Author: #{book.author}"
-    end
+  def run
+    display_menu
+    command = gets.chomp.to_i
+    system('cls')
+    system('clear')
+    handle_command(command) unless command == 7
+    puts 'Thank you for using this app!'
+    handle_exit
+    exit
   end
 
-  def list_people
-    @person.each do |p|
-      puts "[#{p.class.name}] Name: #{p.name}, ID: #{p.id}, Age: #{p.age}"
-    end
-  end
-
-  def create_book
-    print 'Title:'
-    title = gets.chomp
-    print 'author:'
-    author = gets.chomp
-    @books.push(Book.new(title, author))
-    puts 'Book Created Successfully'
-  end
-
-  def check_number(msg)
-    number = 0
-    loop do
-      print msg
-      input = gets.chomp.to_i
-      if input.is_a?(Integer) && input.positive?
-        number = input
-        break
-      else
-        puts 'Please, enter a valid input!'
-      end
-    end
-    number
-  end
-
-  def check_options(msg, options)
-    number = 0
-    loop do
-      print msg
-      input = gets.chomp.to_i
-      if options.include?(input)
-        number = input
-        break
-      else
-        puts 'Please, enter a valid input!'
-      end
-    end
-    number
-  end
-
-  def check_permission(permission)
-    case permission
-    when 'y' then permission = true
-    when 'n' then permission = false
-    end
-    permission
-  end
-
-  def create_person
-    num = check_options('Do you want to create a student (1) or a teacher (2)? [input the number]: ', [1, 2])
-    age = check_number('Age:')
-
-    print 'name:'
-    name = gets.chomp
-    classroom = check_number('Classroom:')
-
-    case num
+  def handle_command(command)
+    case command
     when 1
-      print 'Has parent permission? [y/n]:'
-      permission = gets.chomp
-
-      permission = check_permission(permission)
-
-      @person.push(Student.new(age, name, classroom, parent_permission: permission))
+      list_all_books
+      run
     when 2
-      print 'Specialization:'
-      specialty = gets.chomp
-
-      @person.push(Teacher.new(age, specialty, name: name))
+      list_all_people
+      run
+    when 3
+      create_person
+    when 4
+      create_book
+    when 5
+      create_rental
+    when 6
+      list_rentals_for_id
     else
-      puts 'Invalid number, please enter number again!'
-    end
-    puts 'Person created successfully'
-  end
-
-  def create_rental
-    puts 'Select a book from the following list'
-    @books.each_with_index do |book, index|
-      puts "#{index + 1}) Title: \"#{book.title}\", Author: #{book.author}"
-    end
-    book_num = gets.chomp.to_i
-
-    puts 'Select a person from the following list (not id)'
-    @person.each_with_index do |per, index|
-      puts "#{index + 1}) [#{per.class}] Name: #{per.name}, ID: #{per.id}, Age: #{per.age}"
-    end
-
-    iam = gets.chomp.to_i
-
-    print 'Date:'
-    date = gets.chomp
-
-    p_index = iam - 1
-
-    @rentals.push(Rental.new(date, @books[book_num - 1], @person[p_index]))
-    puts 'Rental Created successfully'
-  end
-
-  def list_rentals
-    print 'ID of person:'
-    id = gets.chomp
-    id = id.to_i
-
-    puts 'Rentals'
-
-    @rentals.each do |rental|
-      puts "Date: #{rental.date} Book: \"#{rental.book.title}\" by #{rental.book.author}" if rental.person.id == id
+      puts "Please choose a number between 1..7\n "
+      run
     end
   end
 end
