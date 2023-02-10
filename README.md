@@ -177,9 +177,7 @@ Example:
 - Twitter: [Osama Ashraf](https://twitter.com/OsamaAshraf578?t=l75KjrhQgK4h-vSPfgk1gA&s=08)
 - LinkedIn: [Osama Ashraf](https://www.linkedin.com/in/osama-salem-2a046b203)
 
-👤 **Author2**
-- GitHub: [Vanel Nwaba](https://github.com/vanelnw)
-- LinkedIn: [Vanel Nwaba](https://www.linkedin.com/va-nw)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
