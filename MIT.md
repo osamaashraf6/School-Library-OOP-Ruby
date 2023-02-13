@@ -1,4 +1,4 @@
-## Copyright 2021, [YOUR NAME]
+## Copyright 2023, [Osama, Hevar, Luis]
 
 ###### Please delete this line and the next one
 ###### APP TYPE can be a webpage/website, a web app, a software and so on
